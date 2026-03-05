@@ -4,12 +4,15 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-  "start": "node app.js"
-},
+    "start": "node app.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "config": "^4.4.1",
