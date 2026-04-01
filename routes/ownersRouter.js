@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const ownerModel = require("../models/owner-model");
 
+// This handles the base "/owners" URL
+router.get('/', function (req, res) {
+    res.render("owner-login", { user: null }); 
+});
 
 if (process.env.NODE_ENV === "development") {
     router.post('/create', async function (req, res) {
