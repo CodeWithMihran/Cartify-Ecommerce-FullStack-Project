@@ -3,33 +3,54 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Cartify - Premium Bag Store</title>
+    <title>Cartify | Carry Excellence</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom Glassmorphism for Navbar */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 
-<body class="bg-neutral-100">
-    <nav class="bg-black text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" class="text-2xl font-bold tracking-wide hover:text-amber-400 transition">
-                Cartify
-            </a>
-            <div class="flex items-center space-x-8 text-sm font-medium">
-                <a href="/shop" class="hover:text-amber-400 transition">
-                    Shop
-                </a>
-                <a href="/cart" class="hover:text-amber-400 transition">
-                    Cart
-                </a>
-                <a href="/logout" class="bg-amber-500 text-black px-4 py-2 rounded-full hover:bg-amber-600 transition">
-                    Logout
-                </a>
+<body class="bg-[#FCFCFC] overflow-x-hidden">
+
+    <nav class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 py-6 px-6 md:px-12 flex items-center justify-between nav-glass">
+        
+        <a href="/" class="flex items-center gap-2 group">
+            <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center transition-transform group-hover:rotate-[360deg] duration-700">
+                <i class="ri-handbag-fill text-black text-sm"></i>
             </div>
+            <span class="text-xl font-black text-white tracking-tighter uppercase italic">Cartify</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-12">
+            <a href="#features" class="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 hover:text-amber-500 transition-colors">Features</a>
+            <a href="#auth-section" class="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 hover:text-amber-500 transition-colors">Collections</a>
+            <a href="#auth-section" class="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 hover:text-amber-500 transition-colors">About Us</a>
+        </div>
+
+        <div class="flex items-center gap-6">
+            <button class="text-white opacity-50 hover:opacity-100 transition-opacity">
+                <i class="ri-search-line text-lg"></i>
+            </button>
+            
+            <a href="#auth-section" class="relative group overflow-hidden px-8 py-2.5 rounded-full border border-white/20 text-white text-[11px] font-bold uppercase tracking-widest hover:border-amber-500 transition-all duration-500">
+                <span class="relative z-10 group-hover:text-black transition-colors duration-500">Member Access</span>
+                <div class="absolute inset-0 bg-amber-500 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+            </a>
         </div>
     </nav>

@@ -1,76 +1,142 @@
-<%- include('./partials/header') %>
+<%- include('./partials/user-header') %>
 
-    <% if(success.length>0){ %>
-        <div class="fixed top-6 left-1/2 -translate-x-1/2 px-6 py-3 rounded-xl bg-emerald-500 shadow-lg">
-            <span class="text-white font-medium">
-                <%= success %>
-            </span>
-        </div>
-        <% } %>
-            <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 flex">
-                <aside class="w-64 bg-white/70 backdrop-blur-lg shadow-xl p-8 border-r border-gray-200">
-                    <h1 class="text-2xl font-extrabold text-indigo-600 mb-8 tracking-wide">
-                        Cartify Admin
-                    </h1>
-                    <nav class="flex flex-col space-y-4 text-gray-700 font-medium">
-                        <a href="/products"
-                            class="hover:text-indigo-600 hover:translate-x-1 transition-all duration-200">
-                            📦 All Products
-                        </a>
-                        <a href="/products/create" class="text-indigo-600 font-semibold">
-                            ➕ Create Product
-                        </a>
-                    </nav>
-                </aside>
-                <main class="flex-1 p-12">
-                    <div
-                        class="max-w-3xl mx-auto bg-white/80 backdrop-blur-xl shadow-2xl rounded-3xl p-10 border border-gray-100">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-8">
-                            Create New Product
-                        </h2>
-                        <form autocomplete="off" action="/products/create" method="post" enctype="multipart/form-data"
-                            class="space-y-8">
-                            <div>
-                                <h3 class="text-lg font-semibold text-indigo-600 mb-4">
-                                    Product Details
-                                </h3>
-                                <div class="mb-6">
-                                    <label class="block mb-2 text-gray-600 font-medium">
-                                        Product Image
-                                    </label>
-                                    <input name="image" type="file"
-                                        class="w-full p-3 border border-gray-200 rounded-xl bg-gray-50 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition">
-                                </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <input name="name" type="text" placeholder="Product Name"
-                                        class="p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-400 focus:outline-none transition">
-                                    <input name="price" type="number" placeholder="Product Price"
-                                        class="p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-400 focus:outline-none transition">
-                                    <input name="discount" type="number" placeholder="Discount Price"
-                                        class="p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-400 focus:outline-none transition">
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-indigo-600 mb-4">
-                                    Panel Styling
-                                </h3>
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    <input name="bgcolor" type="text" placeholder="Background Color (e.g. #f3f4f6)"
-                                        class="p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-400 focus:outline-none transition">
-                                    <input name="panelcolor" type="text" placeholder="Panel Color"
-                                        class="p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-400 focus:outline-none transition">
-                                    <input name="textcolor" type="text" placeholder="Text Color"
-                                        class="p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-400 focus:outline-none transition">
-                                </div>
-                            </div>
-                            <div>
-                                <button type="submit"
-                                    class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold text-lg shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                                    🚀 Create Product
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </main>
+<div class="min-h-screen flex bg-[#F8F9FA] font-['Plus_Jakarta_Sans',sans-serif]">
+    
+    <aside class="w-72 bg-[#0D0D0D] text-white p-10 hidden lg:flex flex-col justify-between sticky top-0 h-screen border-r border-white/5">
+        <div>
+            <div class="flex items-center gap-3 mb-16">
+                <div class="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+                    <i class="ri-shield-user-fill text-black text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-black tracking-tighter uppercase italic text-white">Cartify</h2>
+                    <p class="text-[10px] text-zinc-500 uppercase tracking-[0.2em] font-bold">Admin Portal</p>
+                </div>
             </div>
+
+            <nav class="space-y-2">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-zinc-600 font-black mb-4 ml-2">Inventory</p>
+                <a href="/owners/admin" class="flex items-center gap-4 px-5 py-4 text-zinc-400 hover:bg-white/5 hover:text-white rounded-2xl transition-all group">
+                    <i class="ri-layout-grid-fill text-lg group-hover:text-amber-500"></i>
+                    <span class="text-sm">All Products</span>
+                </a>
+                <a href="/owners/admin" class="flex items-center gap-4 px-5 py-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl text-amber-500 font-bold transition-all">
+                    <i class="ri-add-box-line text-lg"></i>
+                    <span class="text-sm tracking-wide">Create Product</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="pt-8 border-t border-white/5">
+            <a href="/logout" class="flex items-center justify-center gap-3 w-full bg-red-500/10 text-red-500 border border-red-500/20 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-red-500 hover:text-white transition-all">
+                <i class="ri-logout-circle-r-line"></i> End Session
+            </a>
+        </div>
+    </aside>
+
+    <main class="flex-1 p-8 md:p-14 overflow-y-auto">
+        
+        <% if(success && success.length > 0){ %>
+            <div id="flash-success" class="fixed top-10 left-1/2 -translate-x-1/2 z-[100] animate-bounce">
+                <div class="bg-emerald-600 text-white px-8 py-4 rounded-full shadow-2xl flex items-center gap-3 border-2 border-white">
+                    <i class="ri-checkbox-circle-fill text-xl"></i>
+                    <span class="font-bold tracking-wide uppercase text-xs"><%= success %></span>
+                </div>
+            </div>
+        <% } %>
+
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-12">
+                <h1 class="text-4xl font-black tracking-tighter text-zinc-900 uppercase italic leading-none">Add to Collection</h1>
+                <p class="text-zinc-500 font-light mt-2">Introduce a new premium carry to the Cartify catalog.</p>
+            </div>
+
+            <div class="bg-white rounded-[3rem] p-10 md:p-16 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.04)] border border-zinc-100">
+                <form action="/products/create" method="post" enctype="multipart/form-data" autocomplete="off" class="space-y-12">
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="w-8 h-8 rounded-full bg-zinc-900 text-white flex items-center justify-center text-xs font-bold">01</span>
+                            <h3 class="text-xs font-black uppercase tracking-[0.3em] text-zinc-400">Visual Assets</h3>
+                        </div>
+                        <div class="w-full">
+                            <label class="block text-[10px] font-black uppercase text-zinc-400 mb-2 ml-1">Product Imagery</label>
+                            <div class="relative group">
+                                <input name="image" type="file" required
+                                       class="w-full px-6 py-10 border-2 border-dashed border-zinc-100 rounded-[2rem] bg-zinc-50/50 text-zinc-500 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-black file:bg-zinc-900 file:text-white hover:border-amber-500 transition-all cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 pt-6 border-t border-zinc-50">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="w-8 h-8 rounded-full bg-zinc-900 text-white flex items-center justify-center text-xs font-bold">02</span>
+                            <h3 class="text-xs font-black uppercase tracking-[0.3em] text-zinc-400">Product Identity</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase text-zinc-400 ml-1">Name</label>
+                                <input name="name" type="text" placeholder="e.g. Maverick Duffel" required
+                                       class="w-full px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:border-black outline-none transition-all placeholder:text-zinc-300">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase text-zinc-400 ml-1">Base Price (₹)</label>
+                                <input name="price" type="number" placeholder="4999" required
+                                       class="w-full px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:border-black outline-none transition-all placeholder:text-zinc-300">
+                            </div>
+                            <div class="space-y-2 md:col-span-2">
+                                <label class="text-[10px] font-black uppercase text-zinc-400 ml-1">Member Discount (₹)</label>
+                                <input name="discount" type="number" placeholder="500"
+                                       class="w-full px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:border-black outline-none transition-all placeholder:text-zinc-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 pt-6 border-t border-zinc-50">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="w-8 h-8 rounded-full bg-amber-500 text-black flex items-center justify-center text-xs font-bold">03</span>
+                            <h3 class="text-xs font-black uppercase tracking-[0.3em] text-zinc-400">Atmosphere Styling</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase text-zinc-400 ml-1">Card Background</label>
+                                <input name="bgcolor" type="text" placeholder="#FFFFFF"
+                                       class="w-full px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:border-black outline-none transition-all font-mono text-sm">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase text-zinc-400 ml-1">Panel Accent</label>
+                                <input name="panelcolor" type="text" placeholder="#F59E0B"
+                                       class="w-full px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:border-black outline-none transition-all font-mono text-sm">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase text-zinc-400 ml-1">Text Color</label>
+                                <input name="textcolor" type="text" placeholder="#000000"
+                                       class="w-full px-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:border-black outline-none transition-all font-mono text-sm">
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-zinc-400 italic mt-2">* Use HEX codes for precise brand alignment.</p>
+                    </div>
+
+                    <div class="pt-10">
+                        <button type="submit" 
+                                class="w-full bg-black text-white py-6 rounded-3xl font-black uppercase tracking-[0.3em] text-xs hover:bg-amber-500 hover:text-black transition-all shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] active:scale-95 flex items-center justify-center gap-4">
+                            <i class="ri-rocket-2-fill text-lg"></i>
+                            Publish to Storefront
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    // Auto-hide success message
+    setTimeout(() => {
+        const flash = document.getElementById('flash-success');
+        if(flash) flash.style.opacity = '0';
+        setTimeout(() => flash?.remove(), 500);
+    }, 4000);
+</script>
+
 <%- include('./partials/footer') %>

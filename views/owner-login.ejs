@@ -1,34 +1,78 @@
-<%- include('./partials/header') %>
-<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500">
-    <div class="bg-white/20 backdrop-blur-xl shadow-2xl rounded-3xl p-12 w-[400px] border border-white/30">
-        <h1 class="text-3xl font-extrabold text-white text-center mb-2 tracking-wide">
-            Cartify Admin
-        </h1>
-        <p class="text-white/80 text-center mb-8">
-            Secure Admin Access
-        </p>
-        <form action="/create" method="post" class="space-y-5">
-            <div>
-                <input 
-                    class="w-full px-4 py-3 rounded-xl bg-white/30 text-white placeholder-white/70 border border-white/40 focus:outline-none focus:ring-2 focus:ring-white transition"
-                    type="email" 
-                    placeholder="Enter Email"
-                    name="email"
-                    required>
+<%- include('./partials/header-index') %>
+
+<div class="min-h-screen flex items-center justify-center bg-[#0A0A0A] relative overflow-hidden font-['Plus_Jakarta_Sans',sans-serif]">
+    
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-amber-500/10 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-zinc-800/20 rounded-full blur-[100px]"></div>
+
+    <div class="relative z-10 w-full max-w-[450px] px-6">
+        <div class="bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[3rem] p-10 md:p-14 shadow-2xl">
+            
+            <div class="text-center mb-12">
+                <div class="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(245,158,11,0.2)]">
+                    <i class="ri-shield-keyhole-fill text-black text-3xl"></i>
+                </div>
+                <h1 class="text-3xl font-black text-white tracking-tighter uppercase italic leading-none">
+                    Admin <span class="text-amber-500">Vault</span>
+                </h1>
+                <p class="text-zinc-500 text-[10px] uppercase tracking-[0.4em] font-bold mt-3">
+                    Authorized Personnel Only
+                </p>
             </div>
-            <div>
-                <input 
-                    class="w-full px-4 py-3 rounded-xl bg-white/30 text-white placeholder-white/70 border border-white/40 focus:outline-none focus:ring-2 focus:ring-white transition"
-                    type="password" 
-                    placeholder="Enter Password"
-                    name="password"
-                    required>
+
+            <form action="/owners/login" method="post" class="space-y-6">
+                <div class="group">
+                    <label class="text-[10px] font-black uppercase text-zinc-500 tracking-widest ml-1 mb-2 block group-focus-within:text-amber-500 transition-colors">
+                        Secure Email
+                    </label>
+                    <div class="relative">
+                        <i class="ri-mail-line absolute left-5 top-1/2 -translate-y-1/2 text-zinc-600 group-focus-within:text-amber-500 transition-colors"></i>
+                        <input 
+                            class="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/[0.05] border border-white/5 text-white placeholder-zinc-700 outline-none focus:border-amber-500/50 focus:bg-white/[0.08] transition-all"
+                            type="email" 
+                            placeholder="admin@cartify.com"
+                            name="email"
+                            required>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <label class="text-[10px] font-black uppercase text-zinc-500 tracking-widest ml-1 mb-2 block group-focus-within:text-amber-500 transition-colors">
+                        Access Key
+                    </label>
+                    <div class="relative">
+                        <i class="ri-lock-password-line absolute left-5 top-1/2 -translate-y-1/2 text-zinc-600 group-focus-within:text-amber-500 transition-colors"></i>
+                        <input 
+                            class="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/[0.05] border border-white/5 text-white placeholder-zinc-700 outline-none focus:border-amber-500/50 focus:bg-white/[0.08] transition-all"
+                            type="password" 
+                            placeholder="••••••••"
+                            name="password"
+                            required>
+                    </div>
+                </div>
+
+                <button 
+                    class="group relative w-full py-5 rounded-2xl bg-white text-black font-black uppercase tracking-[0.3em] text-xs shadow-xl hover:bg-amber-500 transition-all duration-500 active:scale-95 overflow-hidden">
+                    <span class="relative z-10 flex items-center justify-center gap-2">
+                        Initialize Access <i class="ri-arrow-right-line group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </button>
+            </form>
+
+            <div class="mt-10 text-center">
+                <p class="text-zinc-600 text-[9px] uppercase tracking-widest leading-relaxed">
+                    Encryption Active • Port 27017 Secured<br>
+                    © 2026 Cartify Internal Systems
+                </p>
             </div>
-            <button 
-                class="w-full py-3 rounded-xl bg-white text-indigo-600 font-semibold text-lg shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                🔐 Login
-            </button>
-        </form>
+        </div>
+        
+        <div class="text-center mt-8">
+            <a href="/" class="text-zinc-500 text-[10px] font-bold uppercase tracking-widest hover:text-white transition-colors">
+                <i class="ri-arrow-left-s-line"></i> Back to Storefront
+            </a>
+        </div>
     </div>
 </div>
+
 <%- include('./partials/footer') %>
