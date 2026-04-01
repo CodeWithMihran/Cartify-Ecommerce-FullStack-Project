@@ -12,7 +12,7 @@ router.get('/', function (req, res) {
 router.get("/shop", isLoggedIn, async function (req, res) {
     let products = await productModel.find();
     let success = req.flash("success");
-    res.render("shop", { products, success });
+    res.render("shop", { products, success, user: req.user }); 
 });
 
 router.get("/cart", isLoggedIn, async function (req, res) {
@@ -21,11 +21,9 @@ router.get("/cart", isLoggedIn, async function (req, res) {
         .populate("cart");
 
     let cartTotal = 0;
-
     user.cart.forEach(item => {
         cartTotal += Number(item.price) - Number(item.discount);
     });
-
     cartTotal += 20;
 
     res.render("cart", { user, cartTotal });
@@ -41,7 +39,7 @@ router.get("/addtocart/:productid", isLoggedIn, async function (req, res) {
 
 router.get("/logout", function(req, res) {
     res.cookie("token", "");
-    req.flash("success", "Logged In successfully");
+    req.flash("success", "Logged out successfully. See you soon!");
     res.redirect("/");
 });
 
