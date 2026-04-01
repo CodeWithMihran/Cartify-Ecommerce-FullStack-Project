@@ -1,0 +1,45 @@
+<footer class="bg-white border-t border-zinc-100 pt-16 pb-12 font-['Plus_Jakarta_Sans',sans-serif]">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+            <div class="flex items-center gap-2 group">
+                <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center group-hover:bg-amber-500 transition-colors">
+                    <i class="ri-handbag-fill text-white group-hover:text-black text-sm"></i>
+                </div>
+                <span class="text-lg font-black tracking-tighter uppercase italic">Cartify</span>
+            </div>
+
+            <div class="flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
+                <a href="/shop" class="hover:text-black transition-colors">Shop</a>
+                <a href="/cart" class="hover:text-black transition-colors">Cart</a>
+                <a href="mailto:sohail.mihran@gmail.com" class="hover:text-black transition-colors">Contact</a>
+            </div>
+
+            <div class="flex gap-4">
+                <a href="https://github.com/CodeWithMihran" target="_blank" class="text-zinc-300 hover:text-black transition-colors text-xl">
+                    <i class="ri-github-fill"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/md-mihran-sohail-321b12384/" target="_blank" class="text-zinc-300 hover:text-black transition-colors text-xl">
+                    <i class="ri-linkedin-box-fill"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-zinc-50 flex flex-col md:row items-center justify-between gap-4">
+            <p class="text-[9px] text-zinc-400 uppercase tracking-[0.3em] font-bold">
+                &copy; <span id="year"></span> <span class="text-black">Cartify</span> • Designed & Developed by <span class="text-black">Md Mihran Sohail</span>
+            </p>
+            <div class="flex items-center gap-6 opacity-30 grayscale">
+                <i class="ri-visa-line text-2xl"></i>
+                <i class="ri-mastercard-line text-2xl"></i>
+                <i class="ri-paypal-line text-2xl"></i>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
