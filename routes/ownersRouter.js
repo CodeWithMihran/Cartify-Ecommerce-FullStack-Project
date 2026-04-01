@@ -53,13 +53,4 @@ router.get('/admin', function (req, res) {
     res.render("createproducts", { success, user: null }); 
 });
 
-router.get("/create-my-account", async function (req, res) {
-    let owner = await ownerModel.create({
-        fullname: "Md Mihran Sohail",
-        email: "admin@cartify.com",
-        password: "your-password"
-    });
-    res.send("Owner Created! Now delete this route from your code.");
-});
-
 module.exports = router;
