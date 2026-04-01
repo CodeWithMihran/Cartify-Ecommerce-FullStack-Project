@@ -78,7 +78,7 @@
 
                 <a href="/cart" class="relative group p-2">
                     <i class="ri-shopping-bag-3-line text-2xl text-zinc-900 group-hover:text-amber-600 transition-colors"></i>
-                    <% if(user && user.cart && user.cart.length > 0) { %>
+                    <% if(typeof user !== 'undefined' && user && user.cart && user.cart.length > 0) { %>
                         <span class="absolute top-0 right-0 w-5 h-5 bg-black text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white shadow-sm">
                             <%= user.cart.length %>
                         </span>
@@ -88,25 +88,37 @@
                 <div class="h-10 w-[1px] bg-zinc-100 mx-2 hidden md:block"></div>
                 
                 <div class="flex items-center gap-4">
-                    <div class="hidden md:flex flex-col items-end">
-                        <span class="text-[10px] font-black text-zinc-900 uppercase tracking-tighter">
-                            <%= user.fullname.split(' ')[0] %> </span>
-                        <span class="text-[9px] font-bold text-emerald-500 uppercase tracking-widest">Active Member</span>
-                    </div>
+                    <% if(typeof user !== 'undefined' && user) { %>
+                        <div class="hidden md:flex flex-col items-end">
+                            <span class="text-[10px] font-black text-zinc-900 uppercase tracking-tighter">
+                                <%= user.fullname ? user.fullname.split(' ')[0] : 'Member' %> 
+                            </span>
+                            <span class="text-[9px] font-bold text-emerald-500 uppercase tracking-widest">Active Member</span>
+                        </div>
+                    <% } %>
                     
                     <div class="relative group cursor-pointer">
                         <div class="w-10 h-10 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-400 overflow-hidden group-hover:border-amber-500 transition-all">
-                            <% if(user.picture) { %>
+                            <% if(typeof user !== 'undefined' && user && user.picture) { %>
                                 <img src="<%= user.picture %>" alt="User" class="w-full h-full object-cover">
                             <% } else { %>
                                 <i class="ri-user-3-line text-lg"></i>
                             <% } %>
                         </div>
                         
-                        <div class="absolute right-0 top-12 w-48 bg-white rounded-2xl shadow-2xl border border-zinc-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-2">
-                            <a href="/logout" class="flex items-center gap-3 px-4 py-3 text-red-500 hover:bg-red-50 rounded-xl transition-all font-bold text-xs uppercase tracking-widest">
-                                <i class="ri-logout-box-r-line"></i> Logout
-                            </a>
+                        <div class="absolute right-0 top-12 w-48 bg-white rounded-2xl shadow-2xl border border-zinc-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-2 z-[110]">
+                            <% if(typeof user !== 'undefined' && user) { %>
+                                <a href="/logout" class="flex items-center gap-3 px-4 py-3 text-red-500 hover:bg-red-50 rounded-xl transition-all font-bold text-xs uppercase tracking-widest">
+                                    <i class="ri-logout-box-r-line"></i> Logout
+                                </a>
+                            <% } else { %>
+                                <a href="/" class="flex items-center gap-3 px-4 py-3 text-zinc-800 hover:bg-zinc-50 rounded-xl transition-all font-bold text-xs uppercase tracking-widest">
+                                    <i class="ri-login-circle-line"></i> User Login
+                                </a>
+                                <a href="/owners/admin" class="flex items-center gap-3 px-4 py-3 text-amber-600 hover:bg-amber-50 rounded-xl transition-all font-bold text-xs uppercase tracking-widest border-t border-zinc-50 mt-1">
+                                    <i class="ri-shield-user-line"></i> Admin Panel
+                                </a>
+                            <% } %>
                         </div>
                     </div>
                 </div>
